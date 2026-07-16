@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Professional Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-indigo-600 tracking-tight">MyBrand.</a>
+            <nav class="hidden md:flex space-x-8 font-medium text-slate-600">
+                <a href="#features" class="hover:text-indigo-600 transition-colors">Tính năng</a>
+                <a href="#about" class="hover:text-indigo-600 transition-colors">Về tôi</a>
+                <a href="#contact" class="hover:text-indigo-600 transition-colors">Liên hệ</a>
+            </nav>
+            <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-full font-medium transition-all shadow-sm">Bắt đầu ngay</a>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6 pt-20 pb-16 md:py-32 flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-1 space-y-6 text-center md:text-left">
+            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-600 animate-pulse"></span>
+                Sẵn sàng trải nghiệm giao diện mới
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight">
+                Xây dựng trang web <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">chuyên nghiệp</span> cực dễ.
+            </h1>
+            <p class="text-lg text-slate-600 max-w-lg mx-auto md:mx-0">
+                Chào mừng bạn đến với trang web được lưu trữ hoàn toàn miễn phí trên GitHub Pages. Giao diện tối giản, tốc độ tải cực nhanh và dễ dàng tùy biến.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                <a href="#features" class="bg-indigo-600 hover:bg-indigo-700 text-white text-center px-8 py-3.5 rounded-xl font-semibold transition-all shadow-md">
+                    Khám phá tính năng
+                </a>
+                <a href="#" class="border border-slate-300 hover:border-slate-400 text-slate-700 text-center px-8 py-3.5 rounded-xl font-semibold transition-all bg-white">
+                    Xem Github <i class="fa-brands fa-github ml-1"></i>
+                </a>
+            </div>
+        </div>
+        <div class="flex-1 w-full max-w-md md:max-w-none">
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+                <div class="relative bg-white border border-slate-200 p-2 rounded-2xl shadow-xl">
+                    <img class="rounded-xl w-full object-cover" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Web Development Illustration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="bg-slate-100 py-20 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <h2 class="text-3xl font-bold text-slate-900">Tại sao chọn giao diện này?</h2>
+                <p class="text-slate-600">Được tối ưu hóa tối đa để mang lại trải nghiệm mượt mà nhất trên mọi thiết bị di động cũng như máy tính.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-950">Tải cực nhanh</h3>
+                    <p class="text-slate-600 leading-relaxed">Không dùng thư viện nặng nề, code được tối ưu hóa giúp trang web hiển thị ngay lập tức.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-950">Chuẩn Responsive</h3>
+                    <p class="text-slate-600 leading-relaxed">Tự động co giãn mượt mà từ màn hình điện thoại, MiPad cho đến màn hình PC siêu rộng.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-950">Dễ tùy biến</h3>
+                    <p class="text-slate-600 leading-relaxed">Sử dụng Tailwind CSS giúp bạn dễ dàng thay đổi màu sắc, font chữ trực tiếp trên code HTML.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-slate-200 bg-white py-12">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="text-slate-500 text-sm">© 2026 MyBrand. Thiết kế bởi bạn trên MiPad.</span>
+            <div class="flex space-x-6 text-slate-400 text-lg">
+                <a href="#" class="hover:text-indigo-600 transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="hover:text-indigo-600 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-indigo-600 transition-colors"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+ 
