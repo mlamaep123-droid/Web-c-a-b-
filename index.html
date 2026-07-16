@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Professional Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
@@ -20,7 +20,7 @@
             <a href="#" class="text-xl font-bold text-indigo-600 tracking-tight">MyBrand.</a>
             <nav class="hidden md:flex space-x-8 font-medium text-slate-600">
                 <a href="#features" class="hover:text-indigo-600 transition-colors">Tính năng</a>
-                <a href="#about" class="hover:text-indigo-600 transition-colors">Về tôi</a>
+                <a href="#story" class="hover:text-indigo-600 transition-colors">Chuyện ngoài lề</a>
                 <a href="#contact" class="hover:text-indigo-600 transition-colors">Liên hệ</a>
             </nav>
             <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-full font-medium transition-all shadow-sm">Bắt đầu ngay</a>
@@ -91,9 +91,68 @@
         </div>
     </section>
 
+    <section id="story" class="bg-white py-20 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-left max-w-3xl mb-12 space-y-3">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-950">Chuyện Ngoài Lề: Câu Chuyện Đằng Sau Tấm Ảnh</h2>
+                <p class="text-indigo-600 font-medium italic text-sm md:text-base">*Mỗi khoảnh khắc đáng nhớ đều có một câu chuyện. Dưới đây là những suy nghĩ của Mạnh Lâm về tấm ảnh này.*</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+                <div class="w-full md:w-[40%] flex justify-center">
+                    <div class="relative bg-slate-100 p-3 rounded-3xl shadow-lg border border-slate-200 max-w-sm">
+                        <img class="rounded-2xl w-full object-cover shadow-inner" src="messi.jpg" alt="Messi Topo Gigio Celebration">
+                    </div>
+                </div>
+
+                <div class="w-full md:w-[60%] space-y-8">
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-1">Cảm hứng bất tận</h3>
+                            <p class="text-slate-600 leading-relaxed">Tấm ảnh này không chỉ là một khoảnh khắc thể thao, mà còn là biểu tượng của sự quyết tâm và niềm đam mê không bao giờ tắt. Đó là động lực để Lâm luôn nỗ lực mỗi ngày.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-1">Nghệ thuật trong từng khoảnh khắc</h3>
+                            <p class="text-slate-600 leading-relaxed">Cách anh ấy (Messi) ăn mừng, với đôi tay đặt sau tai, là một khoảnh khắc nghệ thuật đầy cảm xúc. Nó truyền tải nhiều hơn cả lời nói.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-1">Câu chuyện của sự kiên trì</h3>
+                            <p class="text-slate-600 leading-relaxed">Từ một cậu bé đến một huyền thoại, hành trình của anh ấy nhắc nhở Lâm rằng kiên trì và làm việc chăm chỉ là chìa khóa để đạt được ước mơ.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-1">Điểm nhấn thiết kế</h3>
+                            <p class="text-slate-600 leading-relaxed">Giao diện website này cũng cần có một 'khoảnh khắc Topo Gigio' của riêng nó – một chi tiết độc đáo khiến mọi người nhớ đến.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="border-t border-slate-200 bg-white py-12">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <span class="text-slate-500 text-sm">© 2026 MyBrand. Thiết kế bởi bạn trên MiPad.</span>
+            <span class="text-slate-500 text-sm">© 2026 MyBrand. Thiết kế bởi Mạnh Lâm trên MiPad.</span>
             <div class="flex space-x-6 text-slate-400 text-lg">
                 <a href="#" class="hover:text-indigo-600 transition-colors"><i class="fa-brands fa-github"></i></a>
                 <a href="#" class="hover:text-indigo-600 transition-colors"><i class="fa-brands fa-facebook"></i></a>
