@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Interactive Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background-color: #030407; color: #ffffff; overflow-x: hidden; margin: 0; }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #030407; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00d2ff; }
+
+    /* Hiệu ứng con trỏ gõ chữ */
+    .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background-color: #00d2ff;
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* 3D Flip Card cho thẻ ID */
+    .perspective-1000 { perspective: 1200px; }
+    .preserve-3d { transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1); }
+    .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .rotate-y-180 { transform: rotateY(180deg); }
+
+    /* Hiệu ứng kính lúp X-Ray phần About Me */
+    .xray-container {
+      position: relative;
+      user-select: none;
+      cursor: crosshair;
+    }
+    .xray-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      clip-path: circle(0px at 50% 50%);
+      transition: clip-path 0.08s ease-out;
+    }
+    .xray-ring {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0, 210, 255, 0.5);
+      box-shadow: 0 0 25px rgba(0, 210, 255, 0.25), inset 0 0 15px rgba(0, 210, 255, 0.15);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-black">
+
+  <!-- =========================================================
+       KHU VỰC CẤU HÌNH NHANH (BRO CHỈ CẦN SỬA THÔNG TIN Ở ĐÂY)
+       ========================================================= -->
+  <script>
+    const CONFIG = {
+      name: "Tên Của Bạn",
+      roleBadge: "DEVELOPER",
+      heroHeadline: "Welcome to",
+      heroHighlight: "My Portfolio",
+      typingTexts: [
+        "Web Developer",
+        "Creative Explorer",
+        "Three.js & UI Creator",
+        "Full-Stack Builder"
+      ],
+      heroBio: "Xin chào! Mình là Tên Của Bạn — đam mê lập trình web tương tác, thiết kế giao diện hiện đại và biến những ý tưởng táo bạo thành sản phẩm thực tế.",
+      
+      // 1. ẢNH THẺ ĐEO (Mặt trước) - Thay link ảnh của bạn vào đây
+      idCardPhoto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+      // Mã QR mặt sau thẻ đeo (Tự động tạo QR dẫn tới link của bạn)
+      qrLink: "https://github.com",
+      qrTitle: "TÊN CỦA BẠN",
+      qrSubtitle: "Creative & Tech Portfolio",
+
+      // 2. ẢNH PHẦN ABOUT ME (Hiệu ứng soi X-Ray khi di chuột)
+      // Ảnh chính (nền tối/tách nền càng đẹp)
+      aboutMainPhoto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80",
+      // Ảnh ẩn bên dưới (hiện ra trong vòng tròn khi di chuột qua)
+      aboutHiddenPhoto: "https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=700&q=80",
+
+      aboutTagline: "XIN CHÀO, MÌNH LÀ",
+      aboutSkills: "WEB DEV • CREATIVE EXPLORER",
+      aboutLeftDesc: "Mình thích biến những ý tưởng trên giấy thành trải nghiệm có thể nhìn thấy, chạm vào và khám phá.",
+      aboutRightTitle: "SÁNG TẠO + CÔNG NGHỆ",
+      aboutRightHeadline: "Không chỉ để xem.\nĐể trải nghiệm.",
+      aboutRightDesc: "Mình tập trung xây dựng các sản phẩm web mượt mà, kết hợp chuyển động vật lý, đồ họa tương tác và tư duy tối giản.",
+      
+      // Mạng xã hội & Liên hệ
+      email: "contact@yourdomain.com",
+      githubUrl: "https://github.com",
+      facebookUrl: "https://facebook.com",
+      tiktokUrl: "https://tiktok.com"
+    };
+  </script>
+
+  <!-- 1. MÀN HÌNH LOADING (0% -> 100%) -->
+  <div id="loader" class="fixed inset-0 z-50 bg-[#030407] flex flex-col items-center justify-center transition-opacity duration-700">
+    <div class="text-6xl md:text-7xl font-black tracking-tighter mb-4 flex items-baseline">
+      <span id="load-num">0</span><span class="text-cyan-400 text-4xl md:text-5xl ml-1">%</span>
+    </div>
+    <div class="w-48 h-1 bg-slate-800 rounded-full overflow-hidden">
+      <div id="load-bar" class="h-full bg-cyan-400 w-0 transition-all duration-75"></div>
+    </div>
+  </div>
+
+  <!-- 2. NỀN VŨ TRỤ HẠT TRÔI NỔI -->
+  <canvas id="starfield" class="fixed inset-0 z-0 pointer-events-none"></canvas>
+
+  <!-- 3. THANH NAVIGATION NỔI -->
+  <header class="fixed top-6 left-0 right-0 z-40 flex justify-center px-4">
+    <nav class="flex items-center gap-2 sm:gap-6 px-5 py-2.5 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/10 shadow-2xl">
+      <a href="#home" class="text-xs sm:text-sm font-medium text-white hover:text-cyan-400 transition px-2 py-1">Home</a>
+      <a href="#about" class="text-xs sm:text-sm font-medium text-slate-300 hover:text-cyan-400 transition px-2 py-1">About</a>
+      <a href="#portfolio" class="text-xs sm:text-sm font-medium text-slate-300 hover:text-cyan-400 transition px-2 py-1">Portfolio</a>
+      <a href="#contact" class="text-xs sm:text-sm font-medium text-slate-300 hover:text-cyan-400 transition px-2 py-1">Contact</a>
+      <a href="#contact" class="w-7 h-7 rounded-full bg-cyan-400/10 border border-cyan-400/40 flex items-center justify-center text-cyan-400 hover:bg-cyan-400 hover:text-black transition">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- 4. HERO SECTION + THẺ ĐEO VẬT LÝ (LANYARD ID CARD) -->
+  <section id="home" class="relative z-10 min-h-screen max-w-6xl mx-auto px-6 pt-28 pb-16 flex flex-col lg:flex-row items-center justify-between gap-12">
+    
+    <!-- Cột Trái: Giới thiệu -->
+    <div class="flex-1 text-left space-y-6 mt-6 lg:mt-0">
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08]">
+        <span id="ui-hero-headline" class="block text-white">Welcome to</span>
+        <span id="ui-hero-highlight" class="block text-cyan-400">My Portfolio</span>
+      </h1>
+
+      <div class="text-xl sm:text-2xl font-semibold text-slate-200 h-8">
+        <span id="typing-text"></span><span class="cursor-blink"></span>
+      </div>
+
+      <p id="ui-hero-bio" class="text-slate-400 text-sm sm:text-base max-w-lg leading-relaxed"></p>
+
+      <div class="flex flex-wrap items-center gap-4 pt-2">
+        <a href="#portfolio" class="px-6 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm transition shadow-[0_0_25px_rgba(34,211,238,0.35)]">
+          Xem Dự Án →
+        </a>
+        <a href="#contact" class="px-6 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/15 text-white font-semibold text-sm transition">
+          Liên Hệ Ngay
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4 pt-4 text-xs text-slate-500 font-semibold tracking-widest uppercase">
+        <span>FIND ME</span>
+        <a id="ui-github" href="#" target="_blank" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a id="ui-fb" href="#" target="_blank" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Cột Phải: Thẻ ID Đeo Dây Vật Lý (Kéo thả được + Click lật mặt QR) -->
+    <div class="relative flex-1 flex justify-center items-start min-h-[460px] w-full select-none">
+      <!-- Dây đeo vẽ bằng SVG động theo tọa độ thẻ -->
+      <svg id="lanyard-svg" class="absolute inset-0 w-full h-full pointer-events-none z-20 overflow-visible">
+        <line id="strap-left" x1="50%" y1="-120" x2="50%" y2="80" stroke="#1e293b" stroke-width="14" stroke-linecap="round" />
+        <line id="strap-highlight" x1="50%" y1="-120" x2="50%" y2="80" stroke="#334155" stroke-width="2" stroke-dasharray="6 6" />
+      </svg
 
